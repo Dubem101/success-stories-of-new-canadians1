@@ -12,21 +12,7 @@ export default function HTML(props) {
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
         {props.headComponents}
-        <script src="https://unpkg.com/netlify-auth-providers"></script>
-        <script>
-          $(function() {
-            $("#login").on("click", function (e) {
-              e.preventDefault();
-              var authenticator = new netlify.default({});
-              authenticator.authenticate({ provider: "github", scope: "user" }, function (err, data) {
-                if (err) {
-                  return $("#output").text("Error Authenticating with GitHub: " + err);
-                }
-                $("#output").text("Authenticated with GitHub. Access Token: " + data.token);
-              });
-            })
-        });
-      </script>
+        <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
       </head>
       <body {...props.bodyAttributes}>
         {props.preBodyComponents}
